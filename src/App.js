@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import ButtonAppBar from './components/AppNavigation';
 import './App.css';
+import Appcards from './components/Appcards';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Pitch A Song</h1>
+        <ButtonAppBar />
+        <Appcards />
+        <Appcards />
+        <Appcards />
+
       </div>
     );
   }

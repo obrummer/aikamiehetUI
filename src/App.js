@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import ButtonAppBar from './components/AppNavigation';
+import AppPicture from './components/AppPicture';
+import AppCardHum from './components/AppCardHum';
+import AppCardText from './components/AppCardText';
+import AppCardFile from './components/AppCardFile';
 import './App.css';
-import Appcards from './components/Appcards';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <ButtonAppBar />
-        <Appcards />
-        <Appcards />
-        <Appcards />
+        <AppPicture />
+        <AppCardFile />
+        <AppCardHum />
+        <AppCardText />
 
       </div>
     );

@@ -6,21 +6,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = {
-    card: {
-      minWidth: 275,
-      display: 'inline-block',
-      padding: 20, 
-      margin: 30
-    },
-    title: {
-      fontSize: 14,
-    },
-    pos: {
-      marginBottom: 12,
-    },
-  };
-
 class AppCardFile extends Component {
     render() {
         return (
@@ -38,4 +23,20 @@ class AppCardFile extends Component {
     }
 }
 
+const styles = {
+    card: {
+      minWidth: 275,
+      display: 'inline-block',
+      padding: 20, 
+      margin: 30
+    },
+    title: {
+      fontSize: 14,
+    },
+    pos: {
+      marginBottom: 12,
+    },
+  };
+
 export default withStyles(styles)(AppCardFile);
+

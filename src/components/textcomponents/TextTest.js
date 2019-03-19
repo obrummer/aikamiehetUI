@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class HumRecord extends Component {
+class TextTest extends Component {
     render() {
         return (
             <div>
-                <p>HumRecord</p>
+              <p>Text testing</p>  
             </div>
         );
     }
 }
 
-export default HumRecord;
+export default TextTest;

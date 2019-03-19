@@ -1,41 +1,22 @@
 import React, { Component } from 'react';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-
-const styles = {
-    card: {
-        minWidth: 275,
-        display: 'inline-block',
-        padding: 20,
-        margin: 30
-    },
-    title: {
-        fontSize: 14
-    },
-    pos: {
-        marginBottom: 12
-    }
-};
+import { Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class AppCardText extends Component {
     render() {
         return (
-            <Card className={this.props.classes.card}>
-                <CardContent>
-                    <Typography className={this.props.classes.title} color="textSecondary" gutterBottom>
-                        Test your lyrics
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    <Button size="small">Learn More</Button>
-                </CardActions>
+            <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Body>
+                    <Card.Title>Test your lyrics</Card.Title>
+                    <Card.Text>
+                        Test your song lyrics and get matching results.
+              </Card.Text>
+                    <Link to="/texttest"><Button variant="primary">Test</Button></Link>
+                </Card.Body>
             </Card>
         );
     }
 }
 
-export default withStyles(styles)(AppCardText);
+export default AppCardText;

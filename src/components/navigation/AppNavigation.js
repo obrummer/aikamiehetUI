@@ -1,42 +1,30 @@
 import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-  grow: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-};
+import { Button, Navbar, NavDropdown, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { LinkContainer } from "react-router-bootstrap";
 
 class AppNavigation extends Component {
     render() {
         return (
-            <div className={this.props.classes.root}>
-            <AppBar position="static">
-                <Toolbar>
-                <Typography variant="h6" color="inherit" className={this.props.classes.grow}>
-                    Pitch a Song
-                </Typography>
-                <IconButton className={this.props.classes.menuButton} color="inherit" aria-label="Menu">
-                    <MenuIcon />
-                </IconButton>
-                </Toolbar>
-            </AppBar>
-            </div>
+          <Navbar bg="light" expand="lg">
+          <Navbar.Brand>Pitch A Song</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <NavDropdown title="Menu" id="basic-nav-dropdown">
+                <NavDropdown.Item>Home</NavDropdown.Item>
+                <NavDropdown.Item>Test file</NavDropdown.Item>
+                <NavDropdown.Item>Test hum</NavDropdown.Item>
+                <NavDropdown.Item>Test lyrics</NavDropdown.Item>
+                <NavDropdown.Item>Sign up</NavDropdown.Item>
+                <NavDropdown.Item>Log in</NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
   );
 }
 }
 
 
-export default withStyles(styles)(AppNavigation);
+export default AppNavigation;

@@ -1,39 +1,21 @@
 import React, { Component } from 'react';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-import { lightGreen } from '@material-ui/core/colors';
+import { Jumbotron, Container } from 'react-bootstrap';
 
-const styles = {
-  heroContent: {
-    maxWidth: 600,
-    margin: '0 auto',
-  },
-  heroButtons: {
-    marginTop: 4,
-  },
-  heroUnit: {
-    backgroundColor: lightGreen,
-    margin: 60,
-  },
-} 
 class AppPicture extends Component {
     render() {
         return (
-                <div className={this.props.classes.heroUnit}>
-                <div className={this.props.classes.heroContent}>
-                    <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                    Test your song!
-                    </Typography>
-                    <Typography variant="h6" align="center" color="textSecondary" paragraph>
-                    Do you feel you are making songs which are already composed? Fear not my Friend!
-                    We have a solution for you!
-                    </Typography>
-                    </div>
-                </div>
+          <Jumbotron fluid>
+          <Container>
+            <h1>Test your song!</h1>
+            <p>
+              Do you feel that your song has already been written? Fear not my Friend! Test your song to gain certainty in your composing process.
+            </p>
+          </Container>
+        </Jumbotron>    
                
   );
 }
 }
 
 
-export default withStyles(styles)(AppPicture);
+export default AppPicture;

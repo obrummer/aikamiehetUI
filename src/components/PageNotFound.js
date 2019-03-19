@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class HumRecord extends Component {
+class PageNotFound extends Component {
     render() {
         return (
             <div>
-                <p>HumRecord</p>
+                <p>This page does not exist</p>
             </div>
         );
     }
 }
 
-export default HumRecord;
+export default PageNotFound;

@@ -12,8 +12,8 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <AppNavigation />
                 <Router>
+                <AppNavigation />
                     <Switch>
                         <Route exact path="/" component={HomeView} />
                         <Route exact path="/humrecord" component={HumRecord} />

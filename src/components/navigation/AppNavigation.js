@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Navbar, NavDropdown, Nav } from 'react-bootstrap';
+import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { LinkContainer } from "react-router-bootstrap";
 
 class AppNavigation extends Component {
     render() {
@@ -12,12 +11,12 @@ class AppNavigation extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <NavDropdown title="Menu" id="basic-nav-dropdown">
-                <NavDropdown.Item>Home</NavDropdown.Item>
-                <NavDropdown.Item>Test file</NavDropdown.Item>
-                <NavDropdown.Item>Test hum</NavDropdown.Item>
-                <NavDropdown.Item>Test lyrics</NavDropdown.Item>
-                <NavDropdown.Item>Sign up</NavDropdown.Item>
-                <NavDropdown.Item>Log in</NavDropdown.Item>
+                <Nav.Item><Link to="/">Home</Link></Nav.Item>
+                <Nav.Item><Link to="/filetest">Test file</Link></Nav.Item>
+                <Nav.Item><Link to="/humrecord">Test hum</Link></Nav.Item>
+                <Nav.Item><Link to="/texttest">Test lyrics</Link></Nav.Item>
+                <Nav.Item>Sign up</Nav.Item>
+                <Nav.Item>Log in</Nav.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

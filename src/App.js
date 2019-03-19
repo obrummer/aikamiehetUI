@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
-import ButtonAppBar from './components/AppNavigation';
-import AppPicture from './components/AppPicture';
-import AppCardHum from './components/AppCardHum';
-import AppCardText from './components/AppCardText';
-import AppCardFile from './components/AppCardFile';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import AppNavigation from './components/navigation/AppNavigation';
+import HomeView from './components/HomeView';
+import HumRecord from './components/humcomponents/HumRecord';
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <ButtonAppBar />
-        <AppPicture />
-        <AppCardFile />
-        <AppCardHum />
-        <AppCardText />
-
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="App">
+                <AppNavigation />
+                <Router>
+                    <Switch>
+                        <Route exact path="/" component={HomeView} />
+                        <Route exact path="/humrecord" component={HumRecord} />
+                    </Switch>
+                </Router>
+            </div>
+        );
+    }
 }
 
 export default App;

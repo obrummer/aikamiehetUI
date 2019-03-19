@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 
 class HumRecord extends Component {
     render() {
         return (
             <div>
-                <p>HumRecord</p>
+                <Button>Nappi</Button>
             </div>
         );
     }

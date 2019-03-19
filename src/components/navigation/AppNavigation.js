@@ -19,7 +19,7 @@ const styles = {
   },
 };
 
-class ButtonAppBar extends Component {
+class AppNavigation extends Component {
     render() {
         return (
             <div className={this.props.classes.root}>
@@ -39,4 +39,4 @@ class ButtonAppBar extends Component {
 }
 
 
-export default withStyles(styles)(ButtonAppBar);
+export default withStyles(styles)(AppNavigation);

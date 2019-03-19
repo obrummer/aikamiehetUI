@@ -9,10 +9,10 @@ class AppCardHum extends Component {
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Body>
                     <Card.Title>Test by humming</Card.Title>
-                    <Card.Text>
-                        Test you song by humming and get matching results.
-              </Card.Text>
-              <Link to="/humrecord"><Button variant="primary">Test</Button></Link>
+                    <Card.Text>Test you song by humming and get matching results.</Card.Text>
+                    <Link to="/humrecord">
+                        <Button variant="primary">Test</Button>
+                    </Link>
                 </Card.Body>
             </Card>
         );

@@ -12,14 +12,14 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <AppNavigation />
                 <Router>
+                    <AppNavigation />
                     <Switch>
                         <Route exact path="/" component={HomeView} />
                         <Route exact path="/humrecord" component={HumRecord} />
                         <Route exact path="/texttest" component={TextTest} />
                         <Route exact path="/filetest" component={FileTest} />
-                        <Route path='**' component={PageNotFound} />
+                        <Route path="**" component={PageNotFound} />
                     </Switch>
                 </Router>
             </div>

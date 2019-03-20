@@ -32,15 +32,32 @@ class TextTest extends Component {
         var endresult = JSON.parse(result);
         var res = encodeURI(endresult.text);
 
-        var queryurl = "https://api.audd.io/findLyrics/?q=" + res;
-        console.log(queryurl);
+        var url = "https://api.audd.io/findLyrics/?q=" + res;
+        console.log(url);
+        var data = { url: url};
 
-        fetch(queryurl, { mode: "cors" })
-            .then(vastaus => vastaus.json())
-            .then(data => {
-                this.setState({ data: data });
-                console.log(data);
-            })
+        fetch("http://loppuprojekti-env.4wv6cxwtgr.eu-central-1.elasticbeanstalk.com/lyrics", 
+        {
+            mode: 'cors',
+            method: 'POST', 
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers:{
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            }
+          })
+          .then(res => res.json())
+          .then(response => 
+            console.log('Success:', response))
+          .catch(error => 
+            console.error('Error:', error));
+
+        // fetch(url, { mode: "cors" })
+        //     .then(vastaus => vastaus.json())
+        //     .then(data => {
+        //         this.setState({ data: data });
+        //         console.log(data);
+        //     })
     }
 
     // state = { url: "https://api.audd.io/findLyrics/?q=I%27m%20waking%20up%20to%20ash%20and%20dust", data: [] }  

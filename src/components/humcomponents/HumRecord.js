@@ -1,9 +1,12 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
-import { postFile } from '../../serviceClient';
+import { postFile, mockResult } from '../../serviceClient';
+import { Container, Col, Row } from 'react-bootstrap';
+import './styles/HumRecord.css';
+import HumResults from './HumResults';
+import NoMatch from './NoMatch';
 
 export default class HumRecord extends React.Component {
-    state = { mediaRecorder: null };
+    state = { mediaRecorder: null, isSearching: false, results: '' };
 
     componentDidMount() {
         if (!navigator.mediaDevices) {
@@ -15,13 +18,16 @@ export default class HumRecord extends React.Component {
             this.setState({ mediaRecorder: new MediaRecorder(stream) });
             let mutableRecorder = this.state.mediaRecorder;
             mutableRecorder.onstop = e => {
+                this.setState({ isSearching: true });
                 blob = new Blob(chunks, { type: 'audio/ogg; codecs=opus' });
+                chunks = [];
                 postFile(blob)
                     .then(res => {
-                        console.log(res);
-                        chunks = [];
+                        this.setState({ results: res });
                     })
-                    .catch(err => console.error(err));
+                    .catch(error => {
+                        this.setState({ results: [] });
+                    });
             };
             mutableRecorder.ondataavailable = e => {
                 chunks.push(e.data);
@@ -53,14 +59,31 @@ export default class HumRecord extends React.Component {
 
     render() {
         return (
-            <div>
-                <Button variant="dark" onClick={this.onStart}>
-                    Record
-                </Button>
-                <Button variant="dark" onClick={this.onStop}>
-                    Stop
-                </Button>
-            </div>
+            <Container>
+                <Row>
+                    <Col md={4} />
+                    <Col md={4}>
+                        <button className="round-button" onClick={this.onStart}>
+                            <i className="fa fa-play fa-2x" />
+                        </button>
+                        <button className="round-button" onClick={this.onStop}>
+                            <i className="fa fa-stop fa-2x" />
+                        </button>
+                    </Col>
+                    <Col md={4} />
+                </Row>
+                {this.state.results ? (
+                    <Row>
+                        <Col md={4} />
+                        <Col md={4}>
+                            <HumResults items={this.state.results} />
+                        </Col>
+                        <Col md={4} />
+                    </Row>
+                ) : (
+                    <div />
+                )}
+            </Container>
         );
     }
 }

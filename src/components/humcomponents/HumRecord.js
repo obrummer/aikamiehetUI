@@ -23,6 +23,7 @@ export default class HumRecord extends React.Component {
                 chunks = [];
                 postFile(blob)
                     .then(res => {
+                        console.log(res);
                         this.setState({ results: res });
                     })
                     .catch(error => {
@@ -45,6 +46,7 @@ export default class HumRecord extends React.Component {
             return;
         }
         this.state.mediaRecorder.start();
+        this.setState({ results: '' });
         logger(this.state.mediaRecorder);
     };
 
@@ -61,8 +63,8 @@ export default class HumRecord extends React.Component {
         return (
             <Container>
                 <Row>
-                    <Col md={4} />
-                    <Col md={4}>
+                    <Col md={3} />
+                    <Col md={6}>
                         <button className="round-button" onClick={this.onStart}>
                             <i className="fa fa-play fa-2x" />
                         </button>
@@ -70,17 +72,17 @@ export default class HumRecord extends React.Component {
                             <i className="fa fa-stop fa-2x" />
                         </button>
                     </Col>
-                    <Col md={4} />
+                    <Col md={3} />
                 </Row>
                 <Row>
-                    <Col md={4} />
-                    <Col md={4}>{this.state.error ? <ErrorComponent /> : <div />}</Col>
-                    <Col md={4} />
+                    <Col md={3} />
+                    <Col md={6}>{this.state.error ? <ErrorComponent /> : <div />}</Col>
+                    <Col md={3} />
                 </Row>
                 <Row>
-                    <Col md={4} />
-                    <Col md={4}>{this.state.results ? <HumResults items={this.state.results} /> : <div />}</Col>
-                    <Col md={4} />
+                    <Col md={3} />
+                    <Col md={6}>{this.state.results ? <HumResults items={this.state.results} /> : <div />}</Col>
+                    <Col md={3} />
                 </Row>
             </Container>
         );

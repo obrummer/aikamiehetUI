@@ -19,7 +19,7 @@ export async function postFile(data) {
         }
     } catch (error) {
         console.error(error);
-        return error.message;
+        throw error;
     }
 }
 

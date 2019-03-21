@@ -1,5 +1,5 @@
 import React from 'react';
-import { postFile, mockResult } from '../../serviceClient';
+import { postFile } from '../../serviceClient';
 import { Container, Col, Row } from 'react-bootstrap';
 import './styles/HumRecord.css';
 import HumResults from './HumResults';
@@ -11,6 +11,7 @@ export default class HumRecord extends React.Component {
     componentDidMount() {
         if (!navigator.mediaDevices) {
             alert('getUserMedia not supported');
+            return;
         }
         let blob,
             chunks = [];
@@ -23,7 +24,6 @@ export default class HumRecord extends React.Component {
                 chunks = [];
                 postFile(blob)
                     .then(res => {
-                        console.log(res);
                         this.setState({ results: res });
                     })
                     .catch(error => {

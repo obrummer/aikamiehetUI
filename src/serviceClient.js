@@ -22,16 +22,3 @@ export async function postFile(data) {
         throw error;
     }
 }
-
-export async function mockResult() {
-    try {
-        let res = await fetch('http://localhost:3001/hum');
-        if (!res.ok) throw Error(res.status);
-        let jsonRes = await res.json();
-        if (!jsonRes.success) throw Error(jsonRes.message);
-        return JSON.parse(jsonRes.message);
-    } catch (error) {
-        console.error('result mock getter failed: ' + error);
-        return false;
-    }
-}

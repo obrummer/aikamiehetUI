@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { LinkContainer } from 'react-router-bootstrap';
-import { withRouter } from 'react-router-dom';
 
 class AppNavigation extends Component {
     render() {

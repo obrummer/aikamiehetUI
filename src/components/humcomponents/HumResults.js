@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 import CircularProgressbar from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './styles/HumResults.css';
-import NoMatch from './NoMatch';
+import NoMatch from './ErrorComponent';
 
 // component gets an array of objects as a prop (props.items)
 // object composition = { score: int, artist: string, title: string }

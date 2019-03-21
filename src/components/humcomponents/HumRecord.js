@@ -3,10 +3,10 @@ import { postFile, mockResult } from '../../serviceClient';
 import { Container, Col, Row } from 'react-bootstrap';
 import './styles/HumRecord.css';
 import HumResults from './HumResults';
-import NoMatch from './NoMatch';
+import ErrorComponent from './ErrorComponent';
 
 export default class HumRecord extends React.Component {
-    state = { mediaRecorder: null, isSearching: false, results: '' };
+    state = { mediaRecorder: null, isSearching: false, results: '', error: false };
 
     componentDidMount() {
         if (!navigator.mediaDevices) {
@@ -26,7 +26,7 @@ export default class HumRecord extends React.Component {
                         this.setState({ results: res });
                     })
                     .catch(error => {
-                        this.setState({ results: [] });
+                        this.setState({ error: true });
                     });
             };
             mutableRecorder.ondataavailable = e => {
@@ -72,17 +72,16 @@ export default class HumRecord extends React.Component {
                     </Col>
                     <Col md={4} />
                 </Row>
-                {this.state.results ? (
-                    <Row>
-                        <Col md={4} />
-                        <Col md={4}>
-                            <HumResults items={this.state.results} />
-                        </Col>
-                        <Col md={4} />
-                    </Row>
-                ) : (
-                    <div />
-                )}
+                <Row>
+                    <Col md={4} />
+                    <Col md={4}>{this.state.error ? <ErrorComponent /> : <div />}</Col>
+                    <Col md={4} />
+                </Row>
+                <Row>
+                    <Col md={4} />
+                    <Col md={4}>{this.state.results ? <HumResults items={this.state.results} /> : <div />}</Col>
+                    <Col md={4} />
+                </Row>
             </Container>
         );
     }

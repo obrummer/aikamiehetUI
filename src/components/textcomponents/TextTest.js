@@ -7,7 +7,7 @@ class TextTest extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    state = { url: '/', data: [] }
+    state = { url: '/', data: [], open: false }
 
     // componentDidMount = () => {
     //     this.gettextrecognition();
@@ -32,7 +32,7 @@ class TextTest extends Component {
         var endresult = JSON.parse(result);
         var res = encodeURI(endresult.text);
 
-        var url = "https://api.audd.io/findLyrics/?q=" + res;
+        var url = "https://audd.p.rapidapi.com/findLyrics/?q=" + res;
         console.log(url);
         var data = { url: url};
 
@@ -51,18 +51,13 @@ class TextTest extends Component {
             console.log('Success:', response))
           .catch(error => 
             console.error('Error:', error));
-
-        // fetch(url, { mode: "cors" })
-        //     .then(vastaus => vastaus.json())
-        //     .then(data => {
-        //         this.setState({ data: data });
-        //         console.log(data);
-        //     })
     }
 
     // state = { url: "https://api.audd.io/findLyrics/?q=I%27m%20waking%20up%20to%20ash%20and%20dust", data: [] }  
 
     render() {
+        const { open } = this.state;
+
         return (
             <div>
                 <div>
@@ -71,15 +66,19 @@ class TextTest extends Component {
                         <input type="submit" value="Test" />
                     </form>
                 </div>
-                {/* <Form>
-                    <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Write your lyrics</Form.Label>
-                        <Form.Control as="textarea" rows="2" />
-                    </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Test
+                <div>
+                    <Button onClick={() => this.setState({ open: !open })}
+                    aria-controls="example-collapse-text"
+                    aria-expanded={open}
+                    >
+                    click
                     </Button>
-                </Form> */}
+                    <Collapse in={this.state.open}>
+                    <div id="example-collapse-text">
+                    Lorem ipsum dalla-dalla-daa
+                    </div>
+                    </Collapse>
+                </div>
             </div>
         );
     }

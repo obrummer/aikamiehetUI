@@ -10,9 +10,9 @@ export async function postFile(data) {
         body: formData
     };
     try {
-        let res = await fetch('http://localhost:3001/', options);
+        let res = await fetch('http://loppuprojekti-env.4wv6cxwtgr.eu-central-1.elasticbeanstalk.com/bucket', options);
         if (!res.ok) throw Error(res.status);
-        return true;
+        return res;
     } catch (error) {
         console.error('File upload failed: ' + error);
         throw false;

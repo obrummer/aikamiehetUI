@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, Card } from 'react-bootstrap';
 import LyricBox from './LyricBox';
+import Latency from '../Latency';
 import './styles/TextTest.css';
 
 class TextTest extends Component {
@@ -9,10 +10,11 @@ class TextTest extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    state = { url: '/', data: [], open: false }
+    state = { url: '/', data: [], open: false, loading: false }
 
     handleSubmit(e) {
         e.preventDefault();
+        this.setState({ loading: true, data: [] });
 
         const formData = {};
         for (const field in this.refs) {
@@ -39,7 +41,7 @@ class TextTest extends Component {
             .then(res => res.json())
             .then(response => {
                 console.log('Success:', response)
-                this.setState({ data: response.message.result })
+                this.setState({ data: response.message.result, loading: false })
             })
     }
 
@@ -70,9 +72,9 @@ class TextTest extends Component {
                             Test
                     </Button>
                     </Form>
-                    <ul>
-                        {content}
-                    </ul>
+                    <br />
+                    { this.state.loading ? <Latency /> : '' }
+                    {content}
                 </div>
         );
     }

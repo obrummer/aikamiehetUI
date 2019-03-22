@@ -5,11 +5,11 @@ import Progress from '../Progress';
 
 class FileTest extends Component {
 
-    state = { progressTime: 10, progressLabel: 0 };
+    state = { progressTime: 0, progressLabel: 0 };
 
     componentDidMount() {
         setInterval(this.increaseProgress, 100)
-        setInterval(this.increaseLabel, 1000)   
+        setInterval(this.increaseLabel, 1000)
     }
 
     increaseProgress = () => {
@@ -25,7 +25,8 @@ class FileTest extends Component {
             <div>
                 <p>File testausta</p>
                 <Latency />
-                <Progress now={this.state.progressTime} label={ this.state.progressLabel}  />
+                <br />
+                <Progress now={this.state.progressTime} label={this.state.progressLabel} />
             </div>
         );
     }

@@ -53,7 +53,6 @@ class TextTest extends Component {
                         <div>
                             <LyricBox text={s.lyrics}/>
                         </div>
-                        {/* <Button variant="primary">Get lyrics</Button> */}
                     </Card.Body>
                 </Card>
             </div>

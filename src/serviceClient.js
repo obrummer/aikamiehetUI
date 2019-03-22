@@ -10,7 +10,7 @@ export async function postFile(data) {
         body: formData
     };
     try {
-        let res = await fetch('http://Loppuprojekti-env.4wv6cxwtgr.eu-central-1.elasticbeanstalk.com/hum', options);
+        let res = await fetch('http://loppuprojekti-env.4wv6cxwtgr.eu-central-1.elasticbeanstalk.com/hum', options);
         let jsonRes = await res.json();
         if (jsonRes.success) {
             return jsonRes.message;

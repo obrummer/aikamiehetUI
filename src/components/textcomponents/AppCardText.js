@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import textpic from './styles/textpic.png';
 
 class AppCardText extends Component {
     render() {
         return (
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src={textpic} />
                 <Card.Body>
                     <Card.Title>Test your lyrics</Card.Title>
                     <Card.Text>

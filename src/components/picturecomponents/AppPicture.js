@@ -11,7 +11,7 @@ class AppPicture extends Component {
               Do you feel that your song has already been written? Fear not my Friend! Test your song to gain certainty in your composing process.
             </p>
           </Container>
-        </Jumbotron>    
+        </Jumbotron> 
                
   );
 }

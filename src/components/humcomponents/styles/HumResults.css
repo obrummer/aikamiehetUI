@@ -1,7 +1,8 @@
-.hum-result-title-row {
-    border: 2px solid black;
+.CircularProgressbar {
+    max-width: 3rem;
+    max-height: 3rem;
 }
 
-.CircularProgressbar {
-    max-width: 4rem;
+.card {
+    min-width: 100%;
 }

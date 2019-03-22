@@ -1,16 +1,17 @@
 import React from 'react';
-import { postFile, mockResult } from '../../serviceClient';
+import { postFile } from '../../serviceClient';
 import { Container, Col, Row } from 'react-bootstrap';
 import './styles/HumRecord.css';
 import HumResults from './HumResults';
-import NoMatch from './NoMatch';
+import ErrorComponent from './ErrorComponent';
 
 export default class HumRecord extends React.Component {
-    state = { mediaRecorder: null, isSearching: false, results: '' };
+    state = { mediaRecorder: null, isSearching: false, results: '', error: false };
 
     componentDidMount() {
         if (!navigator.mediaDevices) {
             alert('getUserMedia not supported');
+            return;
         }
         let blob,
             chunks = [];
@@ -26,7 +27,7 @@ export default class HumRecord extends React.Component {
                         this.setState({ results: res });
                     })
                     .catch(error => {
-                        this.setState({ results: [] });
+                        this.setState({ error: true });
                     });
             };
             mutableRecorder.ondataavailable = e => {
@@ -45,6 +46,7 @@ export default class HumRecord extends React.Component {
             return;
         }
         this.state.mediaRecorder.start();
+        this.setState({ results: '' });
         logger(this.state.mediaRecorder);
     };
 
@@ -61,8 +63,8 @@ export default class HumRecord extends React.Component {
         return (
             <Container>
                 <Row>
-                    <Col md={4} />
-                    <Col md={4}>
+                    <Col md={3} />
+                    <Col md={6}>
                         <button className="round-button" onClick={this.onStart}>
                             <i className="fa fa-play fa-2x" />
                         </button>
@@ -70,19 +72,18 @@ export default class HumRecord extends React.Component {
                             <i className="fa fa-stop fa-2x" />
                         </button>
                     </Col>
-                    <Col md={4} />
+                    <Col md={3} />
                 </Row>
-                {this.state.results ? (
-                    <Row>
-                        <Col md={4} />
-                        <Col md={4}>
-                            <HumResults items={this.state.results} />
-                        </Col>
-                        <Col md={4} />
-                    </Row>
-                ) : (
-                    <div />
-                )}
+                <Row>
+                    <Col md={3} />
+                    <Col md={6}>{this.state.error ? <ErrorComponent /> : <div />}</Col>
+                    <Col md={3} />
+                </Row>
+                <Row>
+                    <Col md={3} />
+                    <Col md={6}>{this.state.results ? <HumResults items={this.state.results} /> : <div />}</Col>
+                    <Col md={3} />
+                </Row>
             </Container>
         );
     }

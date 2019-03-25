@@ -6,7 +6,7 @@ class LyricBox extends Component {
         super(props, context);
 
         this.state = {
-            open: false,
+            open: false
         };
     }
 
@@ -14,17 +14,11 @@ class LyricBox extends Component {
         const { open } = this.state;
         return (
             <div>
-                <Button
-                    onClick={() => this.setState({ open: !open })}
-                    aria-controls="example-collapse-text"
-                    aria-expanded={open}
-                >
+                <Button onClick={() => this.setState({ open: !open })} aria-controls="example-collapse-text" aria-expanded={open}>
                     Get lyrics
                 </Button>
                 <Collapse in={this.state.open}>
-                    <div id="example-collapse-text">
-                       {this.props.text} 
-                    </div>
+                    <div id="example-collapse-text">{this.props.text}</div>
                 </Collapse>
             </div>
         );

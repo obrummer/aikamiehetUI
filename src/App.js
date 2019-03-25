@@ -6,6 +6,7 @@ import HumRecord from './components/humcomponents/HumRecord';
 import TextTest from './components/textcomponents/TextTest';
 import FileTest from './components/filecomponents/FileTest';
 import PageNotFound from './components/PageNotFound';
+import About from './components/aboutcomponents/About';
 import './App.css';
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
                         <Route exact path="/humrecord" component={HumRecord} />
                         <Route exact path="/texttest" component={TextTest} />
                         <Route exact path="/filetest" component={FileTest} />
+                        <Route exact path="/about" component={About} />
                         <Route path="**" component={PageNotFound} />
                     </Switch>
                 </Router>

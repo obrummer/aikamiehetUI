@@ -1,33 +1,61 @@
 import React, { Component } from 'react';
+import { Form, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
+import { postFile } from '../../serviceClient';
 import Latency from '../Latency';
-import Progress from '../Progress';
-
+import FileErrorComponent from './FileErrorComponent';
+import FileResult from './FileResult';
 
 class FileTest extends Component {
+    state = { file: null, isSearching: false, error: false, error_message: '', results: '' };
 
-    state = { progressTime: 0, progressLabel: 0 };
+    handleSubmit = async e => {
+        e.preventDefault();
+        if (!this.state.file) {
+            this.setState({ error: true, error_message: 'No file selected!' });
+            return;
+        }
+        this.setState({ isSearching: true, results: '', error: false, error_message: '' });
+        postFile(this.state.file, 'file')
+            .then(res => {
+                console.log(res);
+                this.setState({ results: res, isSearching: false });
+            })
+            .catch(err => {
+                this.setState({ error: true, error_message: 'File upload failed: ' + err.message, isSearching: false });
+            });
+    };
 
-    componentDidMount() {
-        setInterval(this.increaseProgress, 100)
-        setInterval(this.increaseLabel, 1000)
-    }
-
-    increaseProgress = () => {
-        this.setState({ progressTime: this.state.progressTime + 0.1 });
-    }
-
-    increaseLabel = () => {
-        this.setState({ progressLabel: this.state.progressLabel + 1 });
-    }
+    handleFileChange = e => {
+        this.setState({ file: e.target.files[0] });
+    };
 
     render() {
         return (
-            <div>
-                <p>File testausta</p>
-                <Latency />
-                <br />
-                <Progress now={this.state.progressTime} label={this.state.progressLabel} />
-            </div>
+            <Container>
+                <Row>
+                    <Col md={3} />
+                    <Col md={6}>
+                        <Form onSubmit={this.handleSubmit}>
+                            <Form.Group controlId="file-upload-field">
+                                <Form.Control type="file" placeholder="File" onChange={this.handleFileChange} />
+                                <Form.Text className="text-muted">Choose file to upload.</Form.Text>
+                            </Form.Group>
+                            <Button variant="primary" type="submit">
+                                Send file
+                            </Button>
+                        </Form>
+                    </Col>
+                    <Col md={3} />
+                </Row>
+                <Row>
+                    <Col md={3} />
+                    {this.state.error ? <FileErrorComponent msg={this.state.error_message} /> : <div />}
+                    {this.state.isSearching ? <Latency /> : <div />}
+                    {this.state.results ? <FileResult item={this.state.results} /> : <div />}
+                    <Col md={3} />
+                </Row>
+            </Container>
         );
     }
 }

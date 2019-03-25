@@ -35,7 +35,7 @@ export default class HumRecord extends React.Component {
                     this.setState({ isSearching: true });
                     blob = new Blob(chunks, { type: 'audio/ogg; codecs=opus' });
                     chunks = [];
-                    postFile(blob)
+                    postFile(blob, 'hum')
                         .then(res => {
                             this.setState({ results: res, isSearching: false });
                         })

@@ -89,7 +89,7 @@ class TextTest extends Component {
                 <br />
                 {this.state.loading ? <Latency /> : ''}
                 {this.state.data.length === 0 ? <NoTextMatch /> : content}
-                {/* { this.state.loading===true ? <NoTextMatch style={{ display: 'none' }} /> : <NoTextMatch /> } */}
+                {/* { this.state.loading ? <NoTextMatch style={{ display: 'none' }} /> : <NoTextMatch /> } */}
                 <br />
             </div>
         );

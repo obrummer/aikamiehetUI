@@ -2,16 +2,8 @@ import React, { Component } from 'react';
 import { ProgressBar } from 'react-bootstrap';
 import './Progress.css';
 
-class Progress extends Component {
-    
-    render() {
-
-        return (
-            <div>
-                <ProgressBar min={0} max={20} now={this.props.now} label={`${this.props.label}sec`} />
-            </div>
-        );
-    }
-}
+const Progress = props => {
+    return <ProgressBar min={0} max={20} now={props.now} label={`${props.label} sec`} style={{ width: '100%' }} />;
+};
 
 export default Progress;

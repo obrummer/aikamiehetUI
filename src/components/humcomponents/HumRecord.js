@@ -4,9 +4,20 @@ import { Container, Col, Row } from 'react-bootstrap';
 import './styles/HumRecord.css';
 import HumResults from './HumResults';
 import ErrorComponent from './ErrorComponent';
+import Progress from '../Progress';
+import Latency from '../Latency';
 
 export default class HumRecord extends React.Component {
-    state = { mediaRecorder: null, isSearching: false, results: '', error: false };
+    state = {
+        mediaRecorder: null,
+        isSearching: false,
+        results: '',
+        error: false,
+        progressTime: 0,
+        progressLabel: 0,
+        recInterval: null,
+        recLabel: null
+    };
 
     componentDidMount() {
         if (!navigator.mediaDevices) {
@@ -15,25 +26,31 @@ export default class HumRecord extends React.Component {
         }
         let blob,
             chunks = [];
-        navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-            this.setState({ mediaRecorder: new MediaRecorder(stream) });
-            let mutableRecorder = this.state.mediaRecorder;
-            mutableRecorder.onstop = e => {
-                this.setState({ isSearching: true });
-                blob = new Blob(chunks, { type: 'audio/ogg; codecs=opus' });
-                chunks = [];
-                postFile(blob)
-                    .then(res => {
-                        this.setState({ results: res });
-                    })
-                    .catch(error => {
-                        this.setState({ error: true });
-                    });
-            };
-            mutableRecorder.ondataavailable = e => {
-                chunks.push(e.data);
-            };
-        });
+        navigator.mediaDevices
+            .getUserMedia({ audio: true })
+            .then(stream => {
+                this.setState({ mediaRecorder: new MediaRecorder(stream) });
+                let mutableRecorder = this.state.mediaRecorder;
+                mutableRecorder.onstop = e => {
+                    this.setState({ isSearching: true });
+                    blob = new Blob(chunks, { type: 'audio/ogg; codecs=opus' });
+                    chunks = [];
+                    postFile(blob)
+                        .then(res => {
+                            this.setState({ results: res, isSearching: false });
+                        })
+                        .catch(error => {
+                            throw error;
+                        });
+                };
+                mutableRecorder.ondataavailable = e => {
+                    chunks.push(e.data);
+                };
+            })
+            .catch(error => {
+                console.log('mediarecorder start failed' + error.message);
+                this.setState({ error: true });
+            });
     }
 
     componentWillUnmount() {
@@ -46,8 +63,27 @@ export default class HumRecord extends React.Component {
             return;
         }
         this.state.mediaRecorder.start();
-        this.setState({ results: '' });
+        this.setState({
+            results: '',
+            progressTime: 0,
+            progressLabel: 0,
+            recInterval: setInterval(this.increaseProgress, 100),
+            recLabel: setInterval(this.increaseLabel, 1000),
+            recMaxTime: setTimeout(() => {
+                this.onStop();
+                clearInterval(this.state.recInterval);
+                clearInterval(this.state.recLabel);
+            }, 20 * 1000)
+        });
         logger(this.state.mediaRecorder);
+    };
+
+    increaseProgress = () => {
+        this.setState({ progressTime: this.state.progressTime + 0.1 });
+    };
+
+    increaseLabel = () => {
+        this.setState({ progressLabel: this.state.progressLabel + 1 });
     };
 
     onStop = () => {
@@ -55,6 +91,9 @@ export default class HumRecord extends React.Component {
             console.log('Mediarecorder is not defined or already inactive');
             return;
         }
+        clearInterval(this.state.recInterval);
+        clearInterval(this.state.recLabel);
+        clearTimeout(this.state.recMaxTime);
         this.state.mediaRecorder.stop();
         logger(this.state.mediaRecorder);
     };
@@ -72,6 +111,18 @@ export default class HumRecord extends React.Component {
                             <i className="fa fa-stop fa-2x" />
                         </button>
                     </Col>
+                    <Col md={3} />
+                </Row>
+                <Row>
+                    <Col md={3} />
+                    <Col md={6}>
+                        <Progress now={this.state.progressTime} label={this.state.progressLabel} />
+                    </Col>
+                    <Col md={3} />
+                </Row>
+                <Row>
+                    <Col md={3} />
+                    <Col md={6}>{this.state.isSearching ? <Latency /> : <div />}</Col>
                     <Col md={3} />
                 </Row>
                 <Row>

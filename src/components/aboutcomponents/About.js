@@ -26,25 +26,27 @@ class About extends Component {
 
     render() {
 
-        const content = this.state.data.map((s, index) =>
-        <div key={index}>
-            <Card>
-                <Card.Header>Artist: {s.artist}</Card.Header>
-                <Card.Body>
-                    <Card.Title>Song title: {s.title}</Card.Title>
-                    <div>
-                        <LyricBox text={s.lyrics}/>
-                    </div>
-                </Card.Body>
-            </Card>
-        </div>
-        )
+        console.log(this.state.data);
+
+        // const statistics = this.state.data.map((s, index) =>
+        // <div key={index}>
+        //     <Card>
+        //         <Card.Header>Artist: {s.artist}</Card.Header>
+        //         <Card.Body>
+        //             <Card.Title>Song title: {s.title}</Card.Title>
+        //             <div>
+        //                 <LyricBox text={s.lyrics}/>
+        //             </div>
+        //         </Card.Body>
+        //     </Card>
+        // </div>
+        // )
 
         return (
             <div>
                 <h3>About Test Your Song</h3>
                 <p>The Test Your Song is an awesome application which helps you to test if your awesome composition might be an unintentional plagiarism</p>
-                <p>It offers you three types of tests</p>
+                <p>It offers you three types of tests:</p>
                 <ul>
                     <li>Test Audiofile - You can upload a audiofile and the service tries to match it...</li>
                     <li>Test by Humming - You can record a hum and the service tries to match it...</li>

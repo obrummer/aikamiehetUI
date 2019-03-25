@@ -8,7 +8,7 @@ class Progress extends Component {
 
         return (
             <div>
-                <ProgressBar min={0} max={20} now={this.props.now} label={`${this.props.label}sec`} />
+                <ProgressBar min={0} max={20} now={this.props.now} label={`${this.props.label} sec`} />
             </div>
         );
     }

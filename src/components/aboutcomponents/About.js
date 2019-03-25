@@ -2,45 +2,44 @@ import React, { Component } from 'react';
 
 class About extends Component {
 
-    state = {  };
+    state = { data: [] };
 
     componentDidMount() {
         fetch("http://loppuprojekti-env.4wv6cxwtgr.eu-central-1.elasticbeanstalk.com/about",
-        {
-            mode: 'cors',
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(res => res.json())
-        .then(response => {
-            console.log('Statistics retrieved successfully', response);
-            this.setState({data: response});
-        })
+            {
+                mode: 'cors',
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(response => {
+                console.log('Statistics retrieved successfully', response);
+                this.setState({ data: response });
+            })
     }
 
     functionName = () => {
-        this.setState({  });
+        this.setState({});
     }
 
     render() {
 
         console.log(this.state.data);
 
-        // const statistics = this.state.data.map((s, index) =>
-        // <div key={index}>
-        //     <Card>
-        //         <Card.Header>Artist: {s.artist}</Card.Header>
-        //         <Card.Body>
-        //             <Card.Title>Song title: {s.title}</Card.Title>
-        //             <div>
-        //                 <LyricBox text={s.lyrics}/>
-        //             </div>
-        //         </Card.Body>
-        //     </Card>
-        // </div>
-        // )
+        const stats = this.state.data.map((s, index) =>
+            <div>
+                Audiofile tests/match found/no match<br />
+                {s.filecount} / {s.fileresultok} / {s.fileresultnok}
+                <br />
+                Hum recordings/match found/no match<br />
+                {s.humcount} / {s.humresultok} / {s.humresultnok}
+                <br />
+                Lyrics sent/match found/no match<br />
+                {s.lyricscount} / {s.lyricsresultok} / {s.lyricsresultnok}
+            </div>
+        )
 
         return (
             <div>
@@ -55,14 +54,7 @@ class About extends Component {
                 ...with over 42,000,000 songs in the database.
                 <p>The results of audiofile match includes the links to the matched songs in Spotify. The results of hum match includes also the match score (percentage) for all the matched songs. The results of matched lyrics display all the lyrics of all the matched songs.</p>
                 <p>The Track Records of The Service</p>
-                Audiofile tests/match found/no match<br />
-                {this.state.audiocount}
-                <br />
-                Hum recordings/match found/no match<br />
-                {this.state.humcount}
-                <br />
-                Lyrics sent/match found/no match<br />
-                {this.state.lyricscount}
+                {stats}
             </div>
         );
     }

@@ -27,7 +27,7 @@ class AppNavigation extends Component {
             <Dropdown><Link to="/filetest">Test file</Link></Dropdown>
             <Dropdown><Link to="/humrecord">Test hum</Link></Dropdown>
             <Dropdown><Link to="/texttest">Test lyrics</Link></Dropdown>
-            <Dropdown><Link to="">About</Link></Dropdown>
+            <Dropdown><Link to="/about">About</Link></Dropdown>
           </Dropdown.Menu>
         </Dropdown>
         

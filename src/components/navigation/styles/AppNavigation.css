@@ -3,10 +3,17 @@
     color: black;
 }
 
-.dropdown {
+div.dropdown {
     color: black;
 }
 
 a {
     color: black;
+}
+
+.btn-light {
+    background-color: rgb(175, 224, 228);
+    color: black;
+    border-color: black;
+    float: right;
 }

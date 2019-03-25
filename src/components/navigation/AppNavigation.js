@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
-import { Navbar, NavDropdown, Nav, Dropdown, Col, Row } from 'react-bootstrap';
+import { Navbar, NavDropdown, Nav, Dropdown, Col, Row, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './styles/AppNavigation.css';
 
 class AppNavigation extends Component {
   render() {
     return (
+      <Container>
       <Navbar expand="lg">
         <Navbar.Brand>
-        Test A Song
-        {/* <img
-        src="/testasong4.png"
-        width="90"
-        height=""
+              
+        <img
+        src="/tunesterr.png"
+        width="120"
+        height="50"
         className="d-inline-block align-top"
         alt="React Bootstrap logo"
-      />   */}
-        </Navbar.Brand>       
-        <Dropdown>
+      />  
+        </Navbar.Brand>   
+        <Dropdown alignRight>
           <Dropdown.Toggle variant="light" id="dropdown-basic">
             Navigation          
           </Dropdown.Toggle>
@@ -29,7 +30,9 @@ class AppNavigation extends Component {
             <Dropdown><Link to="">About</Link></Dropdown>
           </Dropdown.Menu>
         </Dropdown>
+        
       </Navbar>
+      </Container>
     );
   }
 }

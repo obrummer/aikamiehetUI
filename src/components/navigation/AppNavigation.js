@@ -6,8 +6,17 @@ import './styles/AppNavigation.css';
 class AppNavigation extends Component {
   render() {
     return (
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand>Pitch A Song</Navbar.Brand>       
+      <Navbar expand="lg">
+        <Navbar.Brand>
+        Test A Song
+        {/* <img
+        src="/testasong4.png"
+        width="90"
+        height=""
+        className="d-inline-block align-top"
+        alt="React Bootstrap logo"
+      />   */}
+        </Navbar.Brand>       
         <Dropdown>
           <Dropdown.Toggle variant="light" id="dropdown-basic">
             Navigation          

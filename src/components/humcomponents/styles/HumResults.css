@@ -6,3 +6,7 @@
 .card {
     min-width: 100%;
 }
+
+.text-center {
+    margin-top: 25px;
+}

@@ -1,6 +1,4 @@
-// postFile returns { success:true, message: array} in successful cases (array is empty if no results)
-// postFile returns { success:false, message: error message} in unsuccessful cases
-export async function postFile(data) {
+export async function postFile(data, path) {
     const formData = new FormData();
     formData.append('audiofile', data);
     const options = {
@@ -10,7 +8,7 @@ export async function postFile(data) {
         body: formData
     };
     try {
-        let res = await fetch('http://loppuprojekti-env.4wv6cxwtgr.eu-central-1.elasticbeanstalk.com/hum', options);
+        let res = await fetch('http://loppuprojekti-env.4wv6cxwtgr.eu-central-1.elasticbeanstalk.com/' + path, options);
         let jsonRes = await res.json();
         if (jsonRes.success) {
             return jsonRes.message;

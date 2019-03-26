@@ -11,9 +11,26 @@ a {
     color: black;
 }
 
+.custom-nav-link {
+    margin-left: 5px;
+}
+
+.badge.badge-secondary {
+    background-color: #1A454C !important;
+    color: white;
+}
+
+.badge.badge-secondary:hover {
+    background-color: rgb(99, 127, 131) !important;
+    color: white;
+}
+
+.bg-light {
+    background-color: white !important;
+}
+
 .btn-light {
-    background-color: rgb(175, 224, 228);
-    color: black;
+    background-color: #1A454C;
+    color: white;
     border-color: black;
-    float: right;
 }

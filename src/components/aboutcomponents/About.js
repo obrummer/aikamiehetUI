@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { Card, Col, Row } from 'react-bootstrap';
+import Latency from '../Latency';
+import Aboutstats from './Aboutstats';
+import './styles/about.css';
 
 class About extends Component {
 
@@ -20,42 +24,31 @@ class About extends Component {
             })
     }
 
-    functionName = () => {
-        this.setState({});
-    }
-
     render() {
 
-        console.log(this.state.data);
-
-        const stats = this.state.data.map((s, index) =>
-            <div>
-                Audiofile tests/match found/no match<br />
-                {s.filecount} / {s.fileresultok} / {s.fileresultnok}
-                <br />
-                Hum recordings/match found/no match<br />
-                {s.humcount} / {s.humresultok} / {s.humresultnok}
-                <br />
-                Lyrics sent/match found/no match<br />
-                {s.lyricscount} / {s.lyricsresultok} / {s.lyricsresultnok}
-            </div>
-        )
-
         return (
-            <div>
-                <h3>About Test Your Song</h3>
-                <p>The Test Your Song is an awesome application which helps you to test if your awesome composition might be an unintentional plagiarism</p>
-                <p>It offers you three types of tests:</p>
-                <ul>
-                    <li>Test Audiofile - You can upload a audiofile and the service tries to match it...</li>
-                    <li>Test by Humming - You can record a hum and the service tries to match it...</li>
-                    <li>Test Your Lyrics - You can enter a text and the service tries to match it...</li>
-                </ul>
-                ...with over 42,000,000 songs in the database.
-                <p>The results of audiofile match includes the links to the matched songs in Spotify. The results of hum match includes also the match score (percentage) for all the matched songs. The results of matched lyrics display all the lyrics of all the matched songs.</p>
-                <p>The Track Records of The Service</p>
-                {stats}
-            </div>
+            <Row>
+            <Col md={2} />
+            <Col md={6}>
+                <Card>
+                    <Card.Header>About Tunesterr</Card.Header>
+                    <Card.Body>
+                        <p>Tunesterr is an awesome application which helps you to validate if your song/composition would be an unintentional plagiarism</p>
+                        <p>It offers you three types of tests:</p>
+                        <ul>
+                            <li>Test Audiofile - You can upload a audiofile and the service tries to match it...</li>
+                            <li>Test by Humming - You can record a hum and the service tries to match it...</li>
+                            <li>Test Your Lyrics - You can enter a text and the service tries to match it...</li>
+                        </ul>
+                        <p>...with over <span>42,000,000</span> songs in the database.</p>
+                        <p>The results of audiofile match includes the links to the matched songs in Spotify. The results of hum match includes also the match score (percentage) for all the matched songs. The results of matched lyrics display all the lyrics of all the matched songs.</p>
+                        {this.state.data.length === 0 ? <Latency /> : <Aboutstats data={this.state.data}/>}
+                    </Card.Body>
+                </Card>
+            </Col>
+            <Col md={2} />
+        </Row>
+
         );
     }
 }

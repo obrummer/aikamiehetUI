@@ -16,7 +16,7 @@ const TextResult = props => {
                     <Card.Body>
                         <Card.Title>Song title: {item.title}</Card.Title>
                         <div>
-                            <LyricBox text={item.lyrics} />
+                            <LyricBox text={item.lyrics} toMatch={props.match} />
                         </div>
                     </Card.Body>
                 </Card>

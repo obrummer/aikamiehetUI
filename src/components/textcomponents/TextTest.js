@@ -15,12 +15,14 @@ class TextTest extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.setState({ loading: true, data: '' });
+        this.setState({ loading: true, data: '', match: '' });
 
         const formData = {};
         for (const field in this.refs) {
             formData[field] = this.refs[field].value;
         }
+
+        this.setState({ match: formData.text});
         var res = encodeURI(formData.text);
         var bodyUrl = 'https://audd.p.rapidapi.com/findLyrics/?q=' + res;
         var bodyData = { url: bodyUrl };
@@ -55,7 +57,7 @@ class TextTest extends Component {
                 </Row>
                 <br />
                 {this.state.loading ? <Latency /> : <div />}
-                {this.state.data ? <TextResult items={this.state.data} /> : <div />}
+                {this.state.data ? <TextResult items={this.state.data} match={this.state.match} /> : <div />}
             </Container>
         );
     }

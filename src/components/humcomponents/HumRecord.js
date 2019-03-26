@@ -6,6 +6,7 @@ import HumResults from './HumResults';
 import ErrorComponent from './ErrorComponent';
 import Progress from '../Progress';
 import Latency from '../Latency';
+import InfoCardHum from './InfoCardHum';
 
 export default class HumRecord extends React.Component {
     state = {
@@ -101,6 +102,7 @@ export default class HumRecord extends React.Component {
     render() {
         return (
             <Container>
+                <InfoCardHum />
                 <Row>
                     <Col md={3} />
                     <Col md={6}>

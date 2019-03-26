@@ -5,6 +5,7 @@ import { postFile } from '../../serviceClient';
 import Latency from '../Latency';
 import FileErrorComponent from './FileErrorComponent';
 import FileResult from './FileResult';
+import InfoCardFile from './InfoCardFile';
 
 class FileTest extends Component {
     state = { file: null, isSearching: false, error: false, error_message: '', results: '' };
@@ -33,6 +34,7 @@ class FileTest extends Component {
     render() {
         return (
             <Container>
+                <InfoCardFile />
                 <Row>
                     <Col md={3} />
                     <Col md={6}>

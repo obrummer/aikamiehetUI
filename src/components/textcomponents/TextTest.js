@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form, Col, Row, Container } from 'react-bootstrap';
 import { postLyrics } from '../../serviceClient';
 import Latency from '../Latency';
+import InfoCardText from './InfoCardText';
 import './styles/TextTest.css';
 import TextResult from './TextResult';
 
@@ -36,13 +37,14 @@ class TextTest extends Component {
     render() {
         return (
             <Container>
+                <InfoCardText />
                 <Row>
                     <Col md={2} />
                     <Col md={8}>
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group controlId="exampleForm.ControlTextarea1" className="textfield">
-                                <Form.Label>Write your lyrics</Form.Label>
-                                <Form.Control as="textarea" rows="1" type="text" placeholder="" ref="text" required />
+                                
+                                <Form.Control as="textarea" rows="2" type="text" placeholder="" ref="text" required />
                             </Form.Group>
                             <Button variant="primary" type="submit">
                                 Test

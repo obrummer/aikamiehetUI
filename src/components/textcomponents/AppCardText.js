@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class AppCardText extends Component {
     render() {
         return (
-            <Card style={{ width: '18rem' }}>
+            <Card border="dark" style={{ width: '18rem' }}>
                 <Card.Img variant="top" src="textpic.png" />
                 <Card.Body>
                     <Card.Title>Test your lyrics</Card.Title>

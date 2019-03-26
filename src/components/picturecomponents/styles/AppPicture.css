@@ -3,6 +3,12 @@
     /* background-image: url('soundwave.png'); */
 }
 
+@media screen and (max-width: 1000px) {
+    #imagecard {
+      display: none;
+    }
+  }
+
 /* .container {
     text-align: left;
 } */

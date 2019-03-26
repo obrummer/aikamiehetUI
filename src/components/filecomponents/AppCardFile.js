@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class AppCardFile extends Component {
     render() {
         return (
-            <Card style={{ width: '18rem' }}>
+            <Card border="dark" style={{ width: '18rem' }}>
                 <Card.Img variant="top" src="filepic.png" />
                 <Card.Body>
                     <Card.Title>Test audiofile</Card.Title>

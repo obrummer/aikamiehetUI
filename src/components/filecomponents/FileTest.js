@@ -12,6 +12,10 @@ class FileTest extends Component {
 
     handleSubmit = async e => {
         e.preventDefault();
+        if (this.state.file.size > 1.5 * 1000000) { // client side validation for courtecy
+            this.setState({ error: true, error_message: 'Max filesize 1MB, selected file ' + (this.state.file.size / 1000000).toFixed(2) + 'MB' });
+            return;
+        }
         if (!this.state.file) {
             this.setState({ error: true, error_message: 'No file selected!' });
             return;
@@ -19,7 +23,6 @@ class FileTest extends Component {
         this.setState({ isSearching: true, results: '', error: false, error_message: '' });
         postFile(this.state.file, 'file')
             .then(res => {
-                console.log(res);
                 this.setState({ results: res, isSearching: false });
             })
             .catch(err => {

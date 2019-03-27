@@ -1,13 +1,13 @@
 export async function postFile(data, path) {
-    const formData = new FormData();
-    formData.append('audiofile', data);
-    const options = {
-        method: 'POST',
-        mode: 'cors',
-        mimeType: 'multipart/form-data',
-        body: formData
-    };
     try {
+        const formData = new FormData();
+        formData.append('audiofile', data);
+        const options = {
+            method: 'POST',
+            mode: 'cors',
+            mimeType: 'multipart/form-data',
+            body: formData
+        };
         let res = await fetch('http://loppuprojekti-env.4wv6cxwtgr.eu-central-1.elasticbeanstalk.com/' + path, options);
         let jsonRes = await res.json();
         if (jsonRes.success) {

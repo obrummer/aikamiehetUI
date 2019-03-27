@@ -12,7 +12,8 @@ class FileTest extends Component {
 
     handleSubmit = async e => {
         e.preventDefault();
-        if (this.state.file.size > 1.5 * 1000000) { // client side validation for courtecy
+        if (this.state.file.size > 1.5 * 1000000) {
+            // client side validation for courtecy
             this.setState({ error: true, error_message: 'Max filesize 1MB, selected file ' + (this.state.file.size / 1000000).toFixed(2) + 'MB' });
             return;
         }
@@ -41,8 +42,9 @@ class FileTest extends Component {
                     <Col md={2} />
                     <Col md={8}>
                         <Card>
-                            <Card.Header>Test your produced song</Card.Header>
+                            <Card.Header />
                             <Card.Body>
+                                <Card.Title>Test your produced song</Card.Title>
                                 <Card.Text>Test your song by sending .mp3 or .ogg -file and get matching results.</Card.Text>
                             </Card.Body>
                             <Form onSubmit={this.handleSubmit} className="file-form">

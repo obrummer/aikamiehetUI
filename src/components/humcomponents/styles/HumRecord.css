@@ -1,18 +1,43 @@
-.round-button {
-    box-sizing: border-box;
-    width: 80px;
-    height: 80px;
-    border: 6px solid #fff;
-    border-radius: 50%;
-    color: #f5f5f5;
-    text-align: center;
-    text-decoration: none;
-    background-color: rgba(0, 0, 0, 0.8);
-    transition: all 0.3s ease;
+.fas.fa-circle {
+    color: rgba(202, 0, 0, 1);
+    text-shadow: 0px 0px 3px rgba(202, 0, 0, 1);
+    margin: 0 10px 0 10px;
 }
 
-.round-button:hover {
-    background-color: rgba(202, 0, 0, 0.8);
-    box-shadow: 0px 0px 10px rgb(133, 196, 255);
-    text-shadow: 0px 0px 10px rgba(133, 196, 255, 1);
+.fas.fa-circle:hover {
+    color: rgba(202, 0, 0, 0.6);
+    text-shadow: 0px 0px 10px rgba(202, 0, 0, 1);
+}
+
+.fa.fa-stop {
+    color: rgb(0, 0, 0);
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+    margin: 0 10px 0 10px;
+}
+
+.fa.fa-stop:hover {
+    color: rgba(0, 0, 0, 0.6);
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+}
+
+.Rec {
+    animation-name: pulse;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes pulse{
+	0%{
+        border-radius: 50%;
+		box-shadow: 0px 0px 5px 0px rgba(173,0,0,.3);
+	}
+	65%{
+        border-radius: 50%;
+		box-shadow: 0px 0px 5px 13px rgba(173,0,0,.3);
+	}
+	90%{
+        border-radius: 50%;
+		box-shadow: 0px 0px 5px 13px rgba(173,0,0,0);
+	}
 }

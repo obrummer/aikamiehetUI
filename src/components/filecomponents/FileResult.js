@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image } from 'react-bootstrap';
+import { Card, Image, Row, Col } from 'react-bootstrap';
 
 const FileResult = props => {
     if (!props.item.artist) {
@@ -12,12 +12,23 @@ const FileResult = props => {
             </Card.Header>
             {props.item.spotifyResult ? (
                 <Card.Body>
-                    <Image src={props.item.spotifyResult.imgUrl || ''} thumbnail />
-                    <span> album: {props.item.spotifyResult.albumName || 'N/A'} </span>
-                    <span> released: {props.item.spotifyResult.releaseDate || 'N/A'} </span>
-                    <Card.Link href={props.item.spotifyResult.trackUrl} target="_blank">
-                        <Image style={{ maxWidth: '35px' }} src="Spotify_Icon.png" />
-                    </Card.Link>
+                    <Row className="hum-result-card-row">
+                        <Col md={4}>
+                            <Image src={props.item.spotifyResult.imgUrl || ''} thumbnail />
+                        </Col>
+                        <Col md={4}>
+                            <span>
+                                {' '}
+                                {props.item.spotifyResult.albumName || 'N/A'} <br /> ({props.item.spotifyResult.releaseDate || 'N/A'})
+                            </span>
+                        </Col>
+                        <Col md={4}>
+                            Listen on Spotify <br />
+                            <Card.Link href={props.item.spotifyResult.trackUrl} target="_blank">
+                                <Image style={{ maxWidth: '35px' }} src="Spotify_Icon.png" />
+                            </Card.Link>
+                        </Col>
+                    </Row>
                 </Card.Body>
             ) : (
                 <Card.Body>No Spotify result</Card.Body>

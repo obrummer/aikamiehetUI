@@ -12,6 +12,7 @@ export default class HumRecord extends React.Component {
     state = {
         mediaRecorder: null,
         isSearching: false,
+        isRecording: false,
         results: '',
         error: false,
         error_message: '',
@@ -34,7 +35,7 @@ export default class HumRecord extends React.Component {
                 this.setState({ mediaRecorder: new MediaRecorder(stream) });
                 let mutableRecorder = this.state.mediaRecorder;
                 mutableRecorder.onstop = e => {
-                    this.setState({ isSearching: true });
+                    this.setState({ isSearching: true, isRecording: false });
                     blob = new Blob(chunks, { type: 'audio/ogg; codecs=opus' });
                     chunks = [];
                     postFile(blob, 'hum')
@@ -51,13 +52,14 @@ export default class HumRecord extends React.Component {
             })
             .catch(error => {
                 console.error(error);
-                this.setState({ error: true, error_message: 'Mediarecorder failed to start, check console..' });
+                this.setState({ isSearching:false, isRecording:false, error: true, error_message: 'Mediarecorder failed to start, check console..' });
             });
     }
 
     componentWillUnmount() {
-        // TODO: clear intervals and progressbar if user gets the hell outta dodge before result is finished
-        this.setState({ mediaRecorder: null });
+        this.setState({ mediaRecorder: null, isSearching:false, isRecording:false });
+        clearInterval(this.state.recInterval);
+        clearInterval(this.state.recLabel);
     }
 
     onStart = () => {
@@ -68,6 +70,7 @@ export default class HumRecord extends React.Component {
         this.state.mediaRecorder.start();
         this.setState({
             results: '',
+            isRecording:true,
             progressTime: 0,
             progressLabel: 0,
             recInterval: setInterval(this.increaseProgress, 100),
@@ -108,12 +111,8 @@ export default class HumRecord extends React.Component {
                 <Row>
                     <Col md={3} />
                     <Col md={6}>
-                        <button className="round-button" onClick={this.onStart}>
-                            <i className="fa fa-play fa-2x" />
-                        </button>
-                        <button className="round-button" onClick={this.onStop}>
-                            <i className="fa fa-stop fa-2x" />
-                        </button>
+                        <i className={this.state.isRecording ? "fas fa-circle fa-3x Rec": "fas fa-circle fa-3x"} onClick={this.onStart} />
+                        <i className="fa fa-stop fa-3x" onClick={this.onStop} />
                     </Col>
                     <Col md={3} />
                 </Row>

@@ -23,3 +23,11 @@
   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75) !important;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75) !important;
 }
+
+body {
+  background-image: url("https://s3.amazonaws.com/audiotestausta/background3.png");
+  height: 130vh;
+  background-position: left;
+  background-repeat: no-repeat;
+  /* background-size: cover; */        
+}

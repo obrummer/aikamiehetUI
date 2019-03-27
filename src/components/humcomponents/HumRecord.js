@@ -56,6 +56,7 @@ export default class HumRecord extends React.Component {
     }
 
     componentWillUnmount() {
+        // TODO: clear intervals and progressbar if user gets the hell outta dodge before result is finished
         this.setState({ mediaRecorder: null });
     }
 

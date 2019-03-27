@@ -5,7 +5,6 @@ import { postFile } from '../../serviceClient';
 import Latency from '../Latency';
 import FileErrorComponent from './FileErrorComponent';
 import FileResult from './FileResult';
-import InfoCardFile from './InfoCardFile';
 import './styles/FileTest.css';
 
 class FileTest extends Component {

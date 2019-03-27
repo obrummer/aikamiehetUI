@@ -1,14 +1,10 @@
 .jumbotron {
-    background-color: rgb(175, 224, 228);
-    /* background-image: url('soundwave.png'); */
+  background-color: rgb(175, 224, 228);
+  /* background-image: url('soundwave.png'); */
 }
 
 @media screen and (max-width: 1000px) {
-    #imagecard {
-      display: none;
-    }
+  #imagecard {
+    display: none;
   }
-
-/* .container {
-    text-align: left;
-} */
+}

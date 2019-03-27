@@ -28,8 +28,8 @@ class About extends Component {
 
         return (
             <Row>
-            <Col md={2} />
-            <Col md={8}>
+            <Col md={3} />
+            <Col md={6}>
                 <Card>
                     <Card.Header></Card.Header>
                     <Card.Body>
@@ -41,13 +41,13 @@ class About extends Component {
                             <li>Test by Humming - You can record a hum and the service tries to match it...</li>
                             <li>Test Your Lyrics - You can enter a text and the service tries to match it...</li>
                         </ul>
-                        <p>...with over <span>42,000,000</span> songs in the database.</p>
+                        <p>...with over <span>42,500,000</span> songs in the database.</p>
                         <p>The results of audiofile match includes the links to the matched songs in Spotify. The results of hum match includes also the match score (percentage) for all the matched songs. The results of matched lyrics display all the lyrics of all the matched songs.</p>
                         {this.state.data.length === 0 ? <Latency /> : <Aboutstats data={this.state.data}/>}
                     </Card.Body>
                 </Card>
             </Col>
-            <Col md={2} />
+            <Col md={3} />
         </Row>
 
         );

@@ -1,26 +1,25 @@
 import React from 'react';
 
-
 const Aboutstats = props => {
     if (props.data.length === 0) {
         return <div />;
     }
-    return (
-        props.data.map((s, index) => {
-            return (<div>
+    return props.data.map((s, index) => {
+        return (
+            <div key={index}>
                 <h5>The Track Records of The Service</h5>
-                Audiofile tests / match found / no match < br />
+                Audiofile tests / match found / no match <br />
                 {s.filecount} / {s.fileresultok} / {s.fileresultnok}
-                < br />
-                Hum recordings / match found / no match < br />
+                <br />
+                Hum recordings / match found / no match <br />
                 {s.humcount} / {s.humresultok} / {s.humresultnok}
-                < br />
-                Lyrics sent / match found / no match < br />
+                <br />
+                Lyrics sent / match found / no match <br />
                 {s.lyricscount} / {s.lyricsresultok} / {s.lyricsresultnok}
-            </div>)
-        })
-    )
-}
+            </div>
+        );
+    });
+};
 
 // class Aboutstats extends Component {
 

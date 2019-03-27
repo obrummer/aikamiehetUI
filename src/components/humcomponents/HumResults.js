@@ -5,10 +5,6 @@ import 'react-circular-progressbar/dist/styles.css';
 import './styles/HumResults.css';
 import NoMatch from './NoMatch';
 
-// component gets an array of objects as a prop (props.items)
-// object composition = { score: int, artist: string, title: string, spotifyResult: false || Object }
-// spotifyResult: {performer: String, albumName: String, releaseDate: String, trackUrl: String, imgUrl: String }
-
 class HumResults extends React.Component {
     render() {
         if (this.props.items.length === 0) {

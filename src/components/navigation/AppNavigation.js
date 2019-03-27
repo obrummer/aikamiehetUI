@@ -31,34 +31,6 @@ class AppNavigation extends Component {
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-
-                {/* <Navbar expand="lg" style={{ backgroundColor: 'white' }}>
-                    
-                    <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
-                        <Dropdown>
-                            <Dropdown.Toggle variant="light" id="dropdown-basic">
-                                Navigation
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <Dropdown>
-                                    <Link to="/">Home</Link>
-                                </Dropdown>
-                                <Dropdown>
-                                    <Link to="/filetest">Test file</Link>
-                                </Dropdown>
-                                <Dropdown>
-                                    <Link to="/humrecord">Test hum</Link>
-                                </Dropdown>
-                                <Dropdown>
-                                    <Link to="/texttest">Test lyrics</Link>
-                                </Dropdown>
-                                <Dropdown>
-                                    <Link to="/about">About</Link>
-                                </Dropdown>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </Navbar.Collapse>
-                </Navbar> */}
             </Container>
         );
     }

@@ -27,21 +27,3 @@ const FileResult = props => {
 };
 
 export default FileResult;
-
-// results found:
-// {
-//     "artist": "Toto",
-//     "title": "Hold the Line",
-//     "album": "Greatest Hits: 40 Trips Around The Sun",
-//     "release_date": "2018-02-09",
-//     "spotifyResult": {
-//         "albumName": "Toto"
-//         "imgUrl": "https://i.scdn.co/image/d6d856563f9ed3d3cc4068a0828a54a7ad4403b3"
-//         "performer": "Toto"
-//         "releaseDate": "1978-10-10"
-//         "song": "Hold the Line"
-//         "trackUrl": "https://open.spotify.com/track/4aVuWgvD0X63hcOCnZtNFA"
-//     }
-// }
-
-// no results: null

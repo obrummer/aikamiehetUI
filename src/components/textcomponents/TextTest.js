@@ -45,8 +45,8 @@ class TextTest extends Component {
                     <Col md={8}>
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group controlId="exampleForm.ControlTextarea1" className="textfield">
-                                
-                                <Form.Control as="textarea" rows="2" type="text" placeholder="" ref="text" required />
+                                <Form.Label>Write your lyrics</Form.Label>
+                                <Form.Control as="textarea" rows="1" type="text" placeholder="" ref="text" required/>
                             </Form.Group>
                             <Button variant="primary" type="submit">
                                 Test

@@ -9,18 +9,51 @@ const Aboutstats = props => {
         return (
             <div key={index}>
                 <h5>The Track Records of The Service</h5>
-                <span className="stats">Audiofile tests / match found / no match</span>< br />
-                <Badge pill variant="warning">{s.filecount}</Badge> / <Badge pill variant="secondary">{s.fileresultok}</Badge> / <Badge pill variant="success">{s.fileresultnok}</Badge>
-                < br />
-                <span className="stats">Hum recordings / match found / no match</span>< br />
-                <Badge pill variant="warning">{s.humcount}</Badge> / <Badge pill variant="secondary">{s.humresultok}</Badge> / <Badge pill variant="success">{s.humresultnok}</Badge>
-                < br />
-                <span className="stats">Lyrics sent / match found / no match</span>< br />
-                <Badge pill variant="warning">{s.lyricscount}</Badge> / <Badge pill variant="secondary">{s.lyricsresultok}</Badge> / <Badge pill variant="success">{s.lyricsresultnok}</Badge>
-            </div>)
-        })
-    )
-}
+                <span className="stats">Audiofile tests / match found / no match</span>
+                <br />
+                <Badge pill variant="warning">
+                    {s.filecount}
+                </Badge>{' '}
+                /{' '}
+                <Badge pill variant="secondary">
+                    {s.fileresultok}
+                </Badge>{' '}
+                /{' '}
+                <Badge pill variant="success">
+                    {s.fileresultnok}
+                </Badge>
+                <br />
+                <span className="stats">Hum recordings / match found / no match</span>
+                <br />
+                <Badge pill variant="warning">
+                    {s.humcount}
+                </Badge>{' '}
+                /{' '}
+                <Badge pill variant="secondary">
+                    {s.humresultok}
+                </Badge>{' '}
+                /{' '}
+                <Badge pill variant="success">
+                    {s.humresultnok}
+                </Badge>
+                <br />
+                <span className="stats">Lyrics sent / match found / no match</span>
+                <br />
+                <Badge pill variant="warning">
+                    {s.lyricscount}
+                </Badge>{' '}
+                /{' '}
+                <Badge pill variant="secondary">
+                    {s.lyricsresultok}
+                </Badge>{' '}
+                /{' '}
+                <Badge pill variant="success">
+                    {s.lyricsresultnok}
+                </Badge>
+            </div>
+        );
+    });
+};
 
 // class Aboutstats extends Component {
 

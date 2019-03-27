@@ -1,5 +1,5 @@
 import React from 'react';
-import { postFile, mock } from '../../serviceClient';
+import { postFile } from '../../serviceClient';
 import { Container, Col, Row } from 'react-bootstrap';
 import './styles/HumRecord.css';
 import HumResults from './HumResults';

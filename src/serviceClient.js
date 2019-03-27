@@ -45,35 +45,3 @@ export async function postLyrics(bodyData) {
         throw error;
     }
 }
-
-export async function mock(data) {
-    return mockAnswerTrue;
-}
-
-const mockAnswerTrue = [
-    {
-        score: 68,
-        artist: 'Incubus',
-        title: 'Drive',
-        spotifyResult: {
-            performer: 'Incubus',
-            albumName: 'Make Yourself',
-            releaseDate: '2007-10-30',
-            trackUrl: 'https://open.spotify.com/track/7nnWIPM5hwE3DaUBkvOIpy',
-            imgUrl: 'https://i.scdn.co/image/a327aa78dd233419d51f5d9aee09f1b6e3b04d30'
-        }
-    },
-    {
-        score: 87,
-        artist: 'Adele',
-        title: 'Someone Like You',
-        spotifyResult: {
-            performer: 'Adele',
-            albumName: '21',
-            releaseDate: '2011-01-19',
-            trackUrl: 'https://open.spotify.com/track/4kflIGfjdZJW4ot2ioixTB',
-            imgUrl: 'https://i.scdn.co/image/7ace39dafcac6a253a026ffa473e0f14389fa1d8'
-        }
-    },
-    { score: 6, artist: 'notfound', title: 'notnotfound', spotifyResult: false }
-];

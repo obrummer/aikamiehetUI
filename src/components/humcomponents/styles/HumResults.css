@@ -7,6 +7,10 @@
     min-width: 100%;
 }
 
-.text-center {
+.text-center.card {
     margin-top: 25px;
+}
+
+.hum-result-card-row {
+    margin: 0% !important;
 }

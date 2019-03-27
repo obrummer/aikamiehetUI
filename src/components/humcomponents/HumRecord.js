@@ -1,5 +1,5 @@
 import React from 'react';
-import { postFile } from '../../serviceClient';
+import { postFile, mock } from '../../serviceClient';
 import { Container, Col, Row } from 'react-bootstrap';
 import './styles/HumRecord.css';
 import HumResults from './HumResults';
@@ -14,6 +14,7 @@ export default class HumRecord extends React.Component {
         isSearching: false,
         results: '',
         error: false,
+        error_message: '',
         progressTime: 0,
         progressLabel: 0,
         recInterval: null,
@@ -22,7 +23,7 @@ export default class HumRecord extends React.Component {
 
     componentDidMount() {
         if (!navigator.mediaDevices) {
-            alert('getUserMedia not supported');
+            this.setState({ error: true, error_message: 'getUserMedia not supported on this browser' });
             return;
         }
         let blob,
@@ -49,12 +50,13 @@ export default class HumRecord extends React.Component {
                 };
             })
             .catch(error => {
-                console.log('mediarecorder start failed' + error.message);
-                this.setState({ error: true });
+                console.error(error);
+                this.setState({ error: true, error_message: 'Mediarecorder failed to start, check console..' });
             });
     }
 
     componentWillUnmount() {
+        // TODO: clear intervals and progressbar if user gets the hell outta dodge before result is finished
         this.setState({ mediaRecorder: null });
     }
 

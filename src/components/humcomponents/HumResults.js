@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image } from 'react-bootstrap';
+import { Card, Image, Row, Col } from 'react-bootstrap';
 import CircularProgressbar from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './styles/HumResults.css';
@@ -21,18 +21,27 @@ class HumResults extends React.Component {
                             <CircularProgressbar
                                 initialAnimation={true}
                                 percentage={item.score}
+                                strokeWidth={10}
                                 text={`${item.score}%`}
-                                styles={{ path: { stroke: '#4cbc40' } }}
+                                styles={{ path: { stroke: '#4cbc40' }, text: { fill: ' #4cbc40', fontSize: '1.6rem' } }}
                             />
                         </Card.Header>
                         {item.spotifyResult ? (
                             <Card.Body>
-                                <Image src={item.spotifyResult.imgUrl || ''} thumbnail />
-                                <span> album: {item.spotifyResult.albumName || 'N/A'} </span>
-                                <span> released: {item.spotifyResult.releaseDate || 'N/A'} </span>
-                                <Card.Link href={item.spotifyResult.trackUrl} target="_blank">
-                                    <Image style={{'maxWidth': '35px'}}src="Spotify_Icon.png" />
-                                </Card.Link>
+                                <Row className="hum-result-card-row">
+                                    <Col sm={4}>
+                                        <Image src={item.spotifyResult.imgUrl || ''} thumbnail />
+                                    </Col>
+                                    <Col sm={4}>
+                                        {item.spotifyResult.albumName || 'N/A'} <br /> ({item.spotifyResult.releaseDate || 'N/A'})
+                                    </Col>
+                                    <Col sm={4}>
+                                        Listen on Spotify
+                                        <Card.Link href={item.spotifyResult.trackUrl} target="_blank">
+                                            <Image style={{ maxWidth: '35px' }} src="Spotify_Icon.png" />
+                                        </Card.Link>
+                                    </Col>
+                                </Row>
                             </Card.Body>
                         ) : (
                             <Card.Body>No Spotify result</Card.Body>

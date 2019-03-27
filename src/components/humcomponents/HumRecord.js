@@ -43,7 +43,13 @@ export default class HumRecord extends React.Component {
                             this.setState({ results: res, isSearching: false });
                         })
                         .catch(error => {
-                            throw error;
+                            console.error(error);
+                            this.setState({
+                                isSearching: false,
+                                isRecording: false,
+                                error: true,
+                                error_message: error.message
+                            });
                         });
                 };
                 mutableRecorder.ondataavailable = e => {
@@ -52,12 +58,17 @@ export default class HumRecord extends React.Component {
             })
             .catch(error => {
                 console.error(error);
-                this.setState({ isSearching:false, isRecording:false, error: true, error_message: 'Mediarecorder failed to start, check console..' });
+                this.setState({
+                    isSearching: false,
+                    isRecording: false,
+                    error: true,
+                    error_message: 'Mediarecorder failed to start..'
+                });
             });
     }
 
     componentWillUnmount() {
-        this.setState({ mediaRecorder: null, isSearching:false, isRecording:false });
+        this.setState({ mediaRecorder: null, isSearching: false, isRecording: false });
         clearInterval(this.state.recInterval);
         clearInterval(this.state.recLabel);
     }
@@ -70,7 +81,7 @@ export default class HumRecord extends React.Component {
         this.state.mediaRecorder.start();
         this.setState({
             results: '',
-            isRecording:true,
+            isRecording: true,
             progressTime: 0,
             progressLabel: 0,
             recInterval: setInterval(this.increaseProgress, 100),
@@ -82,14 +93,6 @@ export default class HumRecord extends React.Component {
             }, 20 * 1000)
         });
         logger(this.state.mediaRecorder);
-    };
-
-    increaseProgress = () => {
-        this.setState({ progressTime: this.state.progressTime + 0.1 });
-    };
-
-    increaseLabel = () => {
-        this.setState({ progressLabel: this.state.progressLabel + 1 });
     };
 
     onStop = () => {
@@ -104,6 +107,14 @@ export default class HumRecord extends React.Component {
         logger(this.state.mediaRecorder);
     };
 
+    increaseProgress = () => {
+        this.setState({ progressTime: this.state.progressTime + 0.1 });
+    };
+
+    increaseLabel = () => {
+        this.setState({ progressLabel: this.state.progressLabel + 1 });
+    };
+
     render() {
         return (
             <Container>
@@ -111,7 +122,7 @@ export default class HumRecord extends React.Component {
                 <Row>
                     <Col md={3} />
                     <Col md={6}>
-                        <i className={this.state.isRecording ? "fas fa-circle fa-3x Rec": "fas fa-circle fa-3x"} onClick={this.onStart} />
+                        <i className={this.state.isRecording ? 'fas fa-circle fa-3x Rec' : 'fas fa-circle fa-3x'} onClick={this.onStart} />
                         <i className="fa fa-stop fa-3x" onClick={this.onStop} />
                     </Col>
                     <Col md={3} />
@@ -127,7 +138,7 @@ export default class HumRecord extends React.Component {
                     <Col md={3} />
                     <Col md={6}>
                         {this.state.isSearching ? <Latency /> : <div />}
-                        {this.state.error ? <ErrorComponent /> : <div />}
+                        {this.state.error ? <ErrorComponent msg={this.state.error_message} /> : <div />}
                         {this.state.results ? <HumResults items={this.state.results} /> : <div />}
                     </Col>
                     <Col md={3} />

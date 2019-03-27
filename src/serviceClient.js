@@ -9,6 +9,7 @@ export async function postFile(data, path) {
             body: formData
         };
         let res = await fetch('http://loppuprojekti-env.4wv6cxwtgr.eu-central-1.elasticbeanstalk.com/' + path, options);
+        if (!res.ok) throw new Error(res.status, res);
         let jsonRes = await res.json();
         if (jsonRes.success) {
             return jsonRes.message;
@@ -16,12 +17,10 @@ export async function postFile(data, path) {
             throw new Error(jsonRes.message);
         }
     } catch (error) {
-        console.error(error);
         throw error;
     }
 }
 
-// nomatch result is an empty array
 export async function postLyrics(bodyData) {
     const options = {
         mode: 'cors',
@@ -41,7 +40,6 @@ export async function postLyrics(bodyData) {
             throw new Error(jsonRes.message);
         }
     } catch (error) {
-        console.error(error);
         throw error;
     }
 }

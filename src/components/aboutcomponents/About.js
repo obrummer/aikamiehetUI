@@ -29,10 +29,11 @@ class About extends Component {
         return (
             <Row>
             <Col md={2} />
-            <Col md={6}>
+            <Col md={8}>
                 <Card>
-                    <Card.Header>About Tunesterr</Card.Header>
+                    <Card.Header></Card.Header>
                     <Card.Body>
+                    <Card.Title>About Tunesterr</Card.Title>
                         <p>Tunesterr is an awesome application which helps you to validate if your song/composition would be an unintentional plagiarism</p>
                         <p>It offers you three types of tests:</p>
                         <ul>

@@ -4,6 +4,11 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-image: url('https://s3.amazonaws.com/audiotestausta/backgroundlogo.png');
+  background-position: left; */
+  /* background-repeat: no-repeat;
+  background-size: cover; */
+  /* opacity: 0.5; */
 }
 
 code {

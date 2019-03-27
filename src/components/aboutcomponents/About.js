@@ -28,7 +28,7 @@ class About extends Component {
 
         return (
             <Row>
-            <Col md={2} />
+            <Col md={3} />
             <Col md={6}>
                 <Card>
                     <Card.Header>About Tunesterr</Card.Header>
@@ -46,7 +46,7 @@ class About extends Component {
                     </Card.Body>
                 </Card>
             </Col>
-            <Col md={2} />
+            <Col md={3} />
         </Row>
 
         );

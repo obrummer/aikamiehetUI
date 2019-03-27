@@ -124,17 +124,11 @@ export default class HumRecord extends React.Component {
                 </Row>
                 <Row>
                     <Col md={3} />
-                    <Col md={6}>{this.state.isSearching ? <Latency /> : <div />}</Col>
-                    <Col md={3} />
-                </Row>
-                <Row>
-                    <Col md={3} />
-                    <Col md={6}>{this.state.error ? <ErrorComponent /> : <div />}</Col>
-                    <Col md={3} />
-                </Row>
-                <Row>
-                    <Col md={3} />
-                    <Col md={6}>{this.state.results ? <HumResults items={this.state.results} /> : <div />}</Col>
+                    <Col md={6}>
+                        {this.state.isSearching ? <Latency /> : <div />}
+                        {this.state.error ? <ErrorComponent /> : <div />}
+                        {this.state.results ? <HumResults items={this.state.results} /> : <div />}
+                    </Col>
                     <Col md={3} />
                 </Row>
             </Container>
